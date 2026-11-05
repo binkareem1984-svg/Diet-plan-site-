@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fat Loss Diet Plan Creator - Personalized Meal Plans</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Main Style Sheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-background">
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+    </div>
+
+    <main class="app-container">
+        <!-- App Header -->
+        <header class="app-header">
+            <div class="logo-area">
+                <div class="logo-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                </div>
+                <h1>Lean<span>Cut</span></h1>
+            </div>
+            <p class="subtitle">Fat Loss Diet Plan Creator</p>
+        </header>
+
+        <!-- Main Content Wrapper -->
+        <div class="content-wrapper">
+            
+            <!-- VIEW 1: Input Form -->
+            <section id="form-section" class="card form-card active">
+                <div class="card-header">
+                    <h2>Your Details</h2>
+                    <p>Enter your information below to calculate your customized fat loss calorie target and generate your 7-day meal plan.</p>
+                </div>
+                
+                <form id="calculator-form" novalidate>
+                    <!-- Gender Row -->
+                    <div class="form-group">
+                        <label class="form-label">Gender</label>
+                        <div class="gender-selector">
+                            <label class="gender-option">
+                                <input type="radio" name="gender" value="male" checked>
+                                <div class="selector-box">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M10 14h4M12 10v8"/></svg>
+                                    <span>Male</span>
+                                </div>
+                            </label>
+                            <label class="gender-option">
+                                <input type="radio" name="gender" value="female">
+                                <div class="selector-box">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg>
+                                    <span>Female</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Age, Weight, Height Grid -->
+                    <div class="form-grid-3">
+                        <!-- Age -->
+                        <div class="form-group">
+                            <label for="age" class="form-label">Age (years)</label>
+                            <div class="input-wrapper">
+                                <input type="number" id="age" name="age" min="15" max="100" value="28" required>
+                                <span class="input-unit">yrs</span>
+                            </div>
+                        </div>
+
+                        <!-- Weight -->
+                        <div class="form-group">
+                            <div class="label-with-toggle">
+                                <label for="weight" class="form-label">Weight</label>
+                                <div class="unit-toggle" id="weight-unit-toggle">
+                                    <span class="unit-toggle-option active" data-unit="kg">kg</span>
+                                    <span class="unit-toggle-option" data-unit="lbs">lbs</span>
+                                </div>
+                            </div>
+                            <div class="input-wrapper">
+                                <input type="number" id="weight" name="weight" min="30" max="250" value="80" required>
+                                <span class="input-unit" id="weight-unit-label">kg</span>
+                            </div>
+                        </div>
+
+                        <!-- Height -->
+                        <div class="form-group">
+                            <div class="label-with-toggle">
+                                <label for="height" class="form-label">Height</label>
+                                <div class="unit-toggle" id="height-unit-toggle">
+                                    <span class="unit-toggle-option active" data-unit="cm">cm</span>
+                                    <span class="unit-toggle-option" data-unit="in">ft/in</span>
+                                </div>
+                            </div>
+                            <!-- Cm Input Container -->
+                            <div class="input-wrapper" id="height-cm-container">
+                                <input type="number" id="height" name="height" min="100" max="250" value="175" required>
+                                <span class="input-unit" id="height-unit-label">cm</span>
+                            </div>
+                            <!-- Ft/In Input Container (Hidden by default) -->
+                            <div class="height-ft-in-wrapper hidden" id="height-ft-container">
+                                <div class="input-wrapper">
+                                    <input type="number" id="height-ft" name="height-ft" min="3" max="8" value="5">
+                                    <span class="input-unit">ft</span>
+                                </div>
+                                <div class="input-wrapper">
+                                    <input type="number" id="height-in" name="height-in" min="0" max="11" value="9">
+                                    <span class="input-unit">in</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Activity Level Row -->
+                    <div class="form-group">
+                        <label class="form-label">Activity Level</label>
+                        <div class="activity-selector-grid">
+                            <label class="activity-option">
+                                <input type="radio" name="activity" value="sedentary" checked>
+                                <div class="activity-box">
+                                    <div class="activity-header">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                                        <h4>Sedentary</h4>
+                                    </div>
+                                    <p>Desk job, little to no regular exercise.</p>
+                                </div>
+                            </label>
+                            <label class="activity-option">
+                                <input type="radio" name="activity" value="light">
+                                <div class="activity-box">
+                                    <div class="activity-header">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                                        <h4>Lightly Active</h4>
+                                    </div>
+                                    <p>Light exercise or sports 1-3 days per week.</p>
+                                </div>
+                            </label>
+                            <label class="activity-option">
+                                <input type="radio" name="activity" value="moderate">
+                                <div class="activity-box">
+                                    <div class="activity-header">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+                                        <h4>Moderately Active</h4>
+                                    </div>
+                                    <p>Moderate exercise or sports 3-5 days per week.</p>
+                                </div>
+                            </label>
+                            <label class="activity-option">
+                                <input type="radio" name="activity" value="very">
+                                <div class="activity-box">
+                                    <div class="activity-header">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
+                                        <h4>Very Active</h4>
+                                    </div>
+                                    <p>Intense workout or sports 6-7 days per week.</p>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Food Preference -->
+                    <div class="form-group">
+                        <label class="form-label">Food Preference</label>
+                        <div class="preference-selector-grid">
+                            <label class="preference-option">
+                                <input type="radio" name="preference" value="nonveg" checked>
+                                <div class="pref-box">
+                                    <div class="pref-icon">🥩</div>
+                                    <span class="pref-name">Non-Vegetarian</span>
+                                    <span class="pref-desc">Includes poultry, fish, eggs, and dairy</span>
+                                </div>
+                            </label>
+                            <label class="preference-option">
+                                <input type="radio" name="preference" value="veg">
+                                <div class="pref-box">
+                                    <div class="pref-icon">🥛</div>
+                                    <span class="pref-name">Vegetarian</span>
+                                    <span class="pref-desc">Lacto-ovo (dairy & eggs included, no meat)</span>
+                                </div>
+                            </label>
+                            <label class="preference-option">
+                                <input type="radio" name="preference" value="vegan">
+                                <div class="pref-box">
+                                    <div class="pref-icon">🌱</div>
+                                    <span class="pref-name">Vegan</span>
+                                    <span class="pref-desc">Strictly plant-based (no animal products)</span>
+                                </div>
+                            </label>
+                            <label class="preference-option">
+                                <input type="radio" name="preference" value="keto">
+                                <div class="pref-box">
+                                    <div class="pref-icon">🥑</div>
+                                    <span class="pref-name">Keto / Low-Carb</span>
+                                    <span class="pref-desc">High fats, high proteins, very low carbs</span>
+                                </div>
+                            </label>
+                            <label class="preference-option">
+                                <input type="radio" name="preference" value="kerala">
+                                <div class="pref-box">
+                                    <div class="pref-icon">🌴</div>
+                                    <span class="pref-name">Kerala Style</span>
+                                    <span class="pref-desc">Traditional Kerala food (puttu, appam, matta rice, fish/chicken curry)</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Goal Speed -->
+                    <div class="form-group">
+                        <label class="form-label">Goal Speed (Fat Loss Rate)</label>
+                        <div class="speed-selector-grid">
+                            <label class="speed-option">
+                                <input type="radio" name="goalspeed" value="slow">
+                                <div class="speed-box">
+                                    <div class="speed-header">
+                                        <span class="speed-badge steady">Steady</span>
+                                        <h4>Slow & Steady</h4>
+                                    </div>
+                                    <p class="speed-desc">Deficit of ~250 kcal/day. Easiest to maintain long-term. Minimal muscle loss.</p>
+                                </div>
+                            </label>
+                            <label class="speed-option">
+                                <input type="radio" name="goalspeed" value="moderate" checked>
+                                <div class="speed-box">
+                                    <div class="speed-header">
+                                        <span class="speed-badge recommended">Recommended</span>
+                                        <h4>Moderate</h4>
+                                    </div>
+                                    <p class="speed-desc">Deficit of ~500 kcal/day. Balanced pace. Standard fat loss protocol.</p>
+                                </div>
+                            </label>
+                            <label class="speed-option">
+                                <input type="radio" name="goalspeed" value="fast">
+                                <div class="speed-box">
+                                    <div class="speed-header">
+                                        <span class="speed-badge aggressive">Aggressive</span>
+                                        <h4>Aggressive</h4>
+                                    </div>
+                                    <p class="speed-desc">Deficit of ~750 kcal/day. Challenging to maintain. Requires strict adherence.</p>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Form Action -->
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary btn-large" id="btn-generate">
+                            <span>Generate Diet Plan</span>
+                            <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                            <div class="spinner hidden" id="generate-spinner"></div>
+                        </button>
+                    </div>
+                </form>
+            </section>
+
+
+            <!-- VIEW 2: Results Display -->
+            <section id="results-section" class="results-section hidden">
+                
+                <!-- Results Header Card -->
+                <div class="card summary-card">
+                    <div class="summary-top">
+                        <div>
+                            <span class="pill-label">Your Fat Loss Target</span>
+                            <h2 class="calorie-target-display"><span id="target-calories">1,850</span> <span class="unit">kcal / day</span></h2>
+                            <p class="tdee-breakdown">Your TDEE (Maintenance) is <span id="tdee-display">2,350</span> kcal. Your deficit is <span id="deficit-display">-500</span> kcal.</p>
+                        </div>
+                        <div class="water-box">
+                            <div class="water-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a7 7 0 0 0 7-7c0-4.3-7-11-7-11S5 10.7 5 15a7 7 0 0 0 7 7z"/></svg>
+                            </div>
+                            <div class="water-details">
+                                <span class="water-label">Suggested Water Intake</span>
+                                <h4 class="water-qty"><span id="water-liters">3.2</span> Liters</h4>
+                                <p class="water-glasses">Approx. <span id="water-glasses">13</span> glasses (250ml each)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="divider"></div>
+
+                    <!-- Macros Section -->
+                    <div class="macros-container">
+                        <h3 class="section-title-sm">Daily Macronutrient Targets</h3>
+                        <div class="macros-grid">
+                            <!-- Macro 1: Protein -->
+                            <div class="macro-bar-item protein">
+                                <div class="macro-header">
+                                    <span class="macro-name">Protein (30%)</span>
+                                    <span class="macro-amount"><span id="macro-protein-g">138</span>g</span>
+                                </div>
+                                <div class="macro-bar-track">
+                                    <div class="macro-bar-fill" id="macro-protein-fill" style="width: 30%"></div>
+                                </div>
+                                <span class="macro-kcal"><span id="macro-protein-kcal">552</span> kcal</span>
+                            </div>
+                            
+                            <!-- Macro 2: Carbs -->
+                            <div class="macro-bar-item carbs">
+                                <div class="macro-header">
+                                    <span class="macro-name" id="macro-carbs-title">Carbohydrates (45%)</span>
+                                    <span class="macro-amount"><span id="macro-carbs-g">208</span>g</span>
+                                </div>
+                                <div class="macro-bar-track">
+                                    <div class="macro-bar-fill" id="macro-carbs-fill" style="width: 45%"></div>
+                                </div>
+                                <span class="macro-kcal"><span id="macro-carbs-kcal">832</span> kcal</span>
+                            </div>
+
+                            <!-- Macro 3: Fats -->
+                            <div class="macro-bar-item fats">
+                                <div class="macro-header">
+                                    <span class="macro-name" id="macro-fats-title">Fats (25%)</span>
+                                    <span class="macro-amount"><span id="macro-fats-g">51</span>g</span>
+                                </div>
+                                <div class="macro-bar-track">
+                                    <div class="macro-bar-fill" id="macro-fats-fill" style="width: 25%"></div>
+                                </div>
+                                <span class="macro-kcal"><span id="macro-fats-kcal">459</span> kcal</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 7-Day Plan Layout -->
+                <div class="plan-header-area">
+                    <h3>7-Day Weekly Meal Schedule</h3>
+                    <div class="plan-actions">
+                        <button class="btn btn-secondary btn-sm" id="btn-print">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+                            <span>Print / PDF</span>
+                        </button>
+                        <button class="btn btn-primary btn-sm" id="btn-restart">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+                            <span>Edit Details</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Days Navigation Tab List -->
+                <div class="days-tabs-container">
+                    <div class="days-tabs" id="days-tabs-list">
+                        <button class="day-tab active" data-day="0">Mon</button>
+                        <button class="day-tab" data-day="1">Tue</button>
+                        <button class="day-tab" data-day="2">Wed</button>
+                        <button class="day-tab" data-day="3">Thu</button>
+                        <button class="day-tab" data-day="4">Fri</button>
+                        <button class="day-tab" data-day="5">Sat</button>
+                        <button class="day-tab" data-day="6">Sun</button>
+                    </div>
+                </div>
+
+                <!-- Daily Plan Meal Cards Container -->
+                <div class="meals-day-container" id="meals-day-container">
+                    <!-- Dynamic daily plan gets injected here via JS -->
+                </div>
+
+                <!-- Diet Plan Key Guidelines/Tips -->
+                <div class="card guidelines-card">
+                    <h3>💡 Essential Guidelines for Best Results</h3>
+                    <div class="guidelines-grid">
+                        <div class="guideline-item">
+                            <div class="guideline-icon">🍳</div>
+                            <div class="guideline-text">
+                                <h4>Meal Prep Tip</h4>
+                                <p>Prep proteins and grains in bulk for 2-3 days in advance to save cooking time and stay on track.</p>
+                            </div>
+                        </div>
+                        <div class="guideline-item">
+                            <div class="guideline-icon">⚖️</div>
+                            <div class="guideline-text">
+                                <h4>Consistency is Key</h4>
+                                <p>Weigh ingredients raw when possible. Small deviations in oil, sauces, and spreads can stall progress.</p>
+                            </div>
+                        </div>
+                        <div class="guideline-item">
+                            <div class="guideline-icon">🏃</div>
+                            <div class="guideline-text">
+                                <h4>Stay Active</h4>
+                                <p>Aim for 8,000 to 10,000 steps daily in addition to your structured workouts to keep metabolic rate high.</p>
+                            </div>
+                        </div>
+                        <div class="guideline-item">
+                            <div class="guideline-icon">🛌</div>
+                            <div class="guideline-text">
+                                <h4>Prioritize Sleep</h4>
+                                <p>Sleep 7-8 hours per night. Poor sleep increases cortisol and cravings, making fat loss significantly harder.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+        </div>
+    </main>
+
+    <!-- PDF/Print Only Full Schedule Template -->
+    <div id="print-schedule-container" class="print-only">
+        <div class="print-header">
+            <h2>LeanCut - 7-Day Fat Loss Diet Plan</h2>
+            <div class="print-meta-grid">
+                <div><strong>Calorie Target:</strong> <span id="print-meta-calories">1850</span> kcal/day</div>
+                <div><strong>Diet Preference:</strong> <span id="print-meta-preference">Vegetarian</span></div>
+                <div><strong>Daily Water:</strong> <span id="print-meta-water">3.2 Liters</span></div>
+                <div><strong>Goal Deficit:</strong> <span id="print-meta-deficit">-500</span> kcal/day</div>
+            </div>
+            <div class="print-meta-macros">
+                <strong>Daily Macros:</strong> 
+                Protein: <span id="print-meta-protein">138g</span> | 
+                Carbs: <span id="print-meta-carbs">208g</span> | 
+                Fats: <span id="print-meta-fats">51g</span>
+            </div>
+        </div>
+        <div id="print-days-list">
+            <!-- Full week schedule injected here during print trigger -->
+        </div>
+    </div>
+
+    <!-- App JavaScript -->
+    <script src="app.js"></script>
+</body>
+</html>
