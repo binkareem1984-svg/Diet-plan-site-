@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="LeanCut elite gym favicon">
+  <defs>
+    <linearGradient id="gold" x1="0%" x2="100%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#d7c08a"/>
+      <stop offset="52%" stop-color="#f5ebd0"/>
+      <stop offset="100%" stop-color="#8d6b30"/>
+    </linearGradient>
+    <linearGradient id="green" x1="0%" x2="100%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#29d17c"/>
+      <stop offset="100%" stop-color="#0fae65"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="4" y="4" width="56" height="56" rx="18" fill="#090d12"/>
+  <rect x="8" y="8" width="48" height="48" rx="14" fill="none" stroke="url(#gold)" stroke-width="1.5"/>
+
+  <path d="M18 22.5v19M46 22.5v19" stroke="url(#gold)" stroke-width="2.4" stroke-linecap="round"/>
+  <path d="M18 29.2h7v5.6h-7zm21 0h7v5.6h-7z" fill="none" stroke="#f4f4f4" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M27 25h10c2.5 0 4.5 2 4.5 4.5v5c0 2.5-2 4.5-4.5 4.5H27c-2.5 0-4.5-2-4.5-4.5v-5c0-2.5 2-4.5 4.5-4.5Z" fill="none" stroke="url(#gold)" stroke-width="2.1"/>
+  <path d="M35.5 18.5c6.3 1.5 9.7 5.9 10.3 11.2-5.2-.9-8.8-3.9-11-8.1-2 3.1-5.6 5.6-10.5 6.8 0-4.8 3.1-9.9 11.2-10.9Z" fill="url(#green)"/>
+  <path d="M38.4 27.5c2.8 1.1 4.7 3.6 5.6 6.7" stroke="#d9fdea" stroke-width="1.6" stroke-linecap="round"/>
+</svg>
